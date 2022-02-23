@@ -30,7 +30,7 @@ namespace Core {
 
     // ZAKLADNE FUNKCIE
     private function najdi_podstranky() {
-      $pages = scandir(__DIR__ . "/../web/Admin/" . $this->config['web']['pages']);
+      $pages = scandir($this->config['dir']['web'] . $this->config['web']['pages']);
 
       foreach ($pages as $page) {
       $this->pages[] = substr($page, 0, -4);
@@ -195,18 +195,18 @@ namespace Core {
 
       if ($this->config['web']['vue']) {
         $vue = "
-          <script src='../../node_modules/vue/dist/vue.global.prod.js'></script>
-          <script src='../../node_modules/axios/dist/axios.min.js'></script>
-          <script src='../../node_modules/chart.js/dist/chart.min.js'></script>
-          <script src='../../node_modules/jquery/dist/jquery.min.js'></script>
-          <script src='../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'></script>
-          <script src='../../node_modules/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
-          <script src='../../node_modules/mitt/dist/mitt.umd.js'></script>
-          <script src='../../Core/Assets/js/CustomFunctions.js'></script>
-          <script src='../../Core/Assets/js/Functions.js'></script>
-          <script src='../../Core/Assets/js/dia.js'></script>
-          <script src='../../Core/Assets/js/diaTables.js'></script>
-          <script src='../../Core/Assets/js/fontawesome.js'></script>
+          <script src='{$this->config['host']}/node_modules/vue/dist/vue.global.prod.js'></script>
+          <script src='{$this->config['host']}/node_modules/axios/dist/axios.min.js'></script>
+          <script src='{$this->config['host']}/node_modules/chart.js/dist/chart.min.js'></script>
+          <script src='{$this->config['host']}/node_modules/jquery/dist/jquery.min.js'></script>
+          <script src='{$this->config['host']}/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'></script>
+          <script src='{$this->config['host']}/node_modules/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
+          <script src='{$this->config['host']}/node_modules/mitt/dist/mitt.umd.js'></script>
+          <script src='{$this->config['host']}/Core/Assets/js/CustomFunctions.js'></script>
+          <script src='{$this->config['host']}/Core/Assets/js/Functions.js'></script>
+          <script src='{$this->config['host']}/Core/Assets/js/dia.js'></script>
+          <script src='{$this->config['host']}/Core/Assets/js/diaTables.js'></script>
+          <script src='{$this->config['host']}/Core/Assets/js/fontawesome.js'></script>
         ";
       }
 
