@@ -182,13 +182,13 @@ namespace Core {
       }
 
       if ($this->config['web']['bootstrap']) {
-        $bootstrap .= "<link rel='stylesheet' href='//{$this->config['host']}Core/Assets/css/style.css'>";
+        $bootstrap .= "<link rel='stylesheet' href='//{$this->config['host']}/Core/Assets/css/style.css'>";
       }
 
       if ($this->config['web']['dropzone']) {
         $dropzone = "
-          <link rel='stylesheet' type='text/css' href='//{$this->config['host']}node_modules/dropzone/dist/basic.css'>
-          <link rel='stylesheet' type='text/css' href='//{$this->config['host']}node_modules/dropzone/dist/dropzone.css'>
+          <link rel='stylesheet' type='text/css' href='//{$this->config['host']}/node_modules/dropzone/dist/basic.css'>
+          <link rel='stylesheet' type='text/css' href='//{$this->config['host']}/node_modules/dropzone/dist/dropzone.css'>
           <script src='//{$this->config['host']}/node_modules/dropzone/dist/dropzone-min.js'></script>
         ";
       }
