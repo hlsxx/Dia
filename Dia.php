@@ -178,18 +178,18 @@ namespace Core {
       }
 
       foreach ((array)$this->config['head']['script'] as $value) {
-        $script_files .= "<script src='Assets/js/$value'></script>"; 
+        $script_files .= "<script src='//{$this->config['host']}/Assets/js/$value'></script>"; 
       }
 
       if ($this->config['web']['bootstrap']) {
-        $bootstrap .= "<link rel='stylesheet' href='../../Core/Assets/css/style.css'>";
+        $bootstrap .= "<link rel='stylesheet' href='//{$this->config['host']}Core/Assets/css/style.css'>";
       }
 
       if ($this->config['web']['dropzone']) {
         $dropzone = "
-          <link rel='stylesheet' type='text/css' href='../../node_modules/dropzone/dist/basic.css'>
-          <link rel='stylesheet' type='text/css' href='../../node_modules/dropzone/dist/dropzone.css'>
-          <script src='../../node_modules/dropzone/dist/dropzone-min.js'></script>
+          <link rel='stylesheet' type='text/css' href='//{$this->config['host']}node_modules/dropzone/dist/basic.css'>
+          <link rel='stylesheet' type='text/css' href='//{$this->config['host']}node_modules/dropzone/dist/dropzone.css'>
+          <script src='//{$this->config['host']}/node_modules/dropzone/dist/dropzone-min.js'></script>
         ";
       }
 
