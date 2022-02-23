@@ -216,7 +216,9 @@ class Functions {
   }
 
   getCurrentLookup(_this, colName, idLookup) {
-    return _this.lookupsValues[colName][idLookup];
+    if (typeof _this.lookupsValues[colName] != "undefined") {
+      return _this.lookupsValues[colName][idLookup];
+    }
   }
 
 }
