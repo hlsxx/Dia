@@ -30,7 +30,7 @@ namespace Core {
 
     // ZAKLADNE FUNKCIE
     private function najdi_podstranky() {
-      $pages = scandir($this->config['dir']['web'] . $this->config['web']['pages']);
+      $pages = scandir($this->config['dir']['web'] . '/' . $this->config['web']['pages']);
 
       foreach ($pages as $page) {
       $this->pages[] = substr($page, 0, -4);
