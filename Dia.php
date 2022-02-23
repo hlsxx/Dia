@@ -178,7 +178,7 @@ namespace Core {
       }
 
       foreach ((array)$this->config['head']['script'] as $value) {
-        $script_files .= "<script src='//{$this->config['host']}/Assets/js/$value'></script>"; 
+        $script_files .= "<script src='//{$this->config['host']}/{$this->config['hostweb']}/Assets/js/$value'></script>"; 
       }
 
       if ($this->config['web']['bootstrap']) {
