@@ -183,8 +183,7 @@
                             "
                              class="btn mb-2 mb-md-0 btn-round btn-outline"
                           >
-                          {{ itemData }}
-                            {{ getLookupValues(colName, itemData) }} 
+                            {{ getLookupValues(colName, getCurrentLookup(colName, item)) }}
                           </a>
                         </template>
                         <template v-else>
@@ -432,6 +431,9 @@
         } else {
           return image;
         }
+      },
+      getCurrentLookup(colName, item) {
+        return f.getCurrentLookup(this, colName, item);
       }
     },
     beforeCreate() {

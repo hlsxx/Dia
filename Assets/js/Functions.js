@@ -202,12 +202,21 @@ class Functions {
           if (res.data.status != 'fail') {
             _this.lookupsValues[
               _this.tableStructure[item]['lookup_table_col']
-            ] = res.data['data'];
+            ] = [];
+
+            res.data['data'].forEach((itemValue) => {
+              _this.lookupsValues[
+                _this.tableStructure[item]['lookup_table_col']
+              ][itemValue['id']] = itemValue;
+            })
           }
-          console.log(res.data);
         })
       }
     });
+  }
+
+  getCurrentLookup(_this, colName, idLookup) {
+    return _this.lookupsValues[colName][idLookup];
   }
 
 }
