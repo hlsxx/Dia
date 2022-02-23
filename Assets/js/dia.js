@@ -21,6 +21,7 @@ class Dia extends CustomFunctions {
 
     this.formColumns = [];
     this.allTableColumns = [];
+    this.lookupsValues = {};
 
     // Array for new form of table
     this.formValues = [];

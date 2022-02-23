@@ -165,6 +165,7 @@ class Functions {
         _this.allTableColumns = colsAll;
 
         this.loadData(_this, loadDataAction, dataToSet);
+        this.loadLookups(_this);
       }
     })
   }
@@ -188,6 +189,25 @@ class Functions {
         console.log(res);
       }
     })
+  }
+
+  loadLookups(_this) {
+    _this.tableColumnsKeys.forEach((item) => {
+      if (_this.tableStructure[item]['type'] == "lookup") {
+        this.axiosPost("dia_select", {
+          tableName: _this.tableStructure[item]['lookup_table'],
+          conditions: {}
+        },
+        (res) => {
+          if (res.data.status != 'fail') {
+            _this.lookupsValues[
+              _this.tableStructure[item]['lookup_table_col']
+            ] = res.data['data'];
+          }
+          console.log(res.data);
+        })
+      }
+    });
   }
 
 }
