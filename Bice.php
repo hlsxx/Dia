@@ -19,9 +19,9 @@ namespace Core {
     }
 
     public static function pagination(
-      int|string $currentPage = 1, 
-      int|string $count = 10, 
-      int|string $countTotal = 0
+      $currentPage = 1, 
+      $count = 10, 
+      $countTotal = 0
     ) {
 
       if ($countTotal != 0) {
