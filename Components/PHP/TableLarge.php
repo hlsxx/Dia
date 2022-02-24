@@ -10,6 +10,9 @@ namespace Component {
     private string $emptyDataMessage = "";
     private string $fileDir= "";
 
+    private $showSaveButton = "true";
+    private $showDeleteButton = "true";
+
     public function __construct(public string $tableName) {
       parent::__construct($this);
     }
@@ -39,6 +42,16 @@ namespace Component {
       return $this;
     }
 
+    public function showSaveButton($show) {
+      $this->showSaveButton = (string)$show;
+      return $this;
+    }
+
+    public function showDeleteButton($show) {
+      $this->showDeleteButton = (string)$show;
+      return $this;
+    }
+
     public function show() {
       return "
         <dia-table-large :params='{
@@ -49,7 +62,9 @@ namespace Component {
           tableButtons: ".json_encode($this->tableButtons).",
           customColumns: ".json_encode($this->customColumns).",
           emptyDataMessage: \"{$this->emptyDataMessage}\",
-          fileDir: \"{$this->fileDir}\"
+          fileDir: \"{$this->fileDir}\",
+          showSaveButton: \"{$this->showSaveButton}\",
+          showDeleteButton: \"{$this->showDeleteButton}\"
         }'></dia-table-large>
       ";
     }
