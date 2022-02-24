@@ -226,15 +226,15 @@ namespace Core {
     }
 
     public function getPageHeader() : void {
-      @include "{$this->config['dir']['admin']}/{$this->config['web']['includes']}/header.php";
+      @include "{$this->config['dir']['web']}/{$this->config['web']['includes']}/header.php";
     }
 
     public function getPageNavigation() : void {
-      @include "{$this->config['dir']['admin']}/{$this->config['web']['includes']}/navigation.php";
+      @include "{$this->config['dir']['web']}/{$this->config['web']['includes']}/navigation.php";
     }
 
     public function getPageFooter() : void {
-      @include "{$this->config['dir']['admin']}/{$this->config['web']['includes']}/footer.php";
+      @include "{$this->config['dir']['web']}/{$this->config['web']['includes']}/footer.php";
     }
 
     public function daj_zapaticku() {
