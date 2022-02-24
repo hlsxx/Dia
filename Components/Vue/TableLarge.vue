@@ -111,14 +111,14 @@
             </div>
             <div class="col-md-6 col-sm-12 col-lg-4">
               <div class="row">
-                <div class="col">
+                <div v-if="showSaveButton" class="col">
                   <button @click="save(itemData)" type="button" class="btn mb-2 mb-md-0 btn-success btn-block"><span>Uložiť</span> 
                     <div class="icon d-flex align-items-center justify-content-center">
                       <i class="far fa-save color-success"></i>
                     </div>
                   </button>
                 </div>
-                <div class="col">
+                <div v-if="showDeleteButton" class="col">
                   <button @click="deleteItem(itemData['id'])" type="button" class="btn mb-2 mb-md-0 btn-danger btn-block"><span>Zmazať</span> 
                     <div class="icon d-flex align-items-center justify-content-center">
                       <i class="fas fa-trash-alt color-red-dark"></i>
