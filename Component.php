@@ -113,30 +113,6 @@ namespace Core {
       return $this->UID;
     }
 
-    /**
-     * GET JSON table structure for
-     * required fields and else settings
-     * @return
-     */
-    public function getTableStructure() {
-      $diaTables = 
-        $this->select(
-          $this->config['dia_tables'],
-          [],
-          [],
-          FALSE
-        )
-      ;
-
-      $this->tableStructure = 
-        json_decode(
-          $diaTables[0]['structure']
-        )
-      ;
-
-      //$this->tableName = $diaTables[0]['table_name'];
-    }
-
     public function getTableRequiredFields(string $tableName) {
       $requiredFields = [];
 
