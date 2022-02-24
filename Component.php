@@ -28,7 +28,6 @@ namespace Core {
       $this->uid = \Core\Bice::getuid();
 
       $this->VueComponentLoader($_this);
-      $this->getTableStructure();
     }
 
     /**
