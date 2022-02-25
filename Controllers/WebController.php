@@ -106,7 +106,7 @@ namespace Core\Controllers {
         $returnData['data'] = json_decode($returnData['data']);
       }
 
-      if (self::checkParamIfExists('return-only-data')) {
+      if (self::checkParamIfExists('return_only_data')) {
         $returnData = $returnData['data'];
       }
 
