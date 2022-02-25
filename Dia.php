@@ -189,6 +189,9 @@ namespace Core {
         $dropzone = "
           <link rel='stylesheet' type='text/css' href='//{$this->config['host']}/node_modules/dropzone/dist/basic.css'>
           <link rel='stylesheet' type='text/css' href='//{$this->config['host']}/node_modules/dropzone/dist/dropzone.css'>
+          <link rel='stylesheet' type='text/css' href='//{$this->config['host']}/Core/Assets/css/sweetalert.css'>
+          <link rel='stylesheet' type='text/css' href='//{$this->config['host']}/Core/Assets/css/fancybox.css'>
+          <link rel='stylesheet' type='text/css' href='//{$this->config['host']}/Core/Assets/css/gallery.css'>
           <script src='//{$this->config['host']}/node_modules/dropzone/dist/dropzone-min.js'></script>
         ";
       }
@@ -207,6 +210,7 @@ namespace Core {
           <script src='//{$this->config['host']}/Core/Assets/js/dia.js'></script>
           <script src='//{$this->config['host']}/Core/Assets/js/diaTables.js'></script>
           <script src='//{$this->config['host']}/Core/Assets/js/fontawesome.js'></script>
+          <script src='//{$this->config['host']}/Core/Assets/js/sweetalert.js'></script>
         ";
       }
 
