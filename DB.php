@@ -138,7 +138,7 @@ namespace Core {
         foreach ($table_data as $key => $value) {
           if ($key != 'id') {
             $columns .= $key .", ";
-            $values .= "'" . $value ."', ";
+            $values .= "'" . (is_array($value) ? json_encode($value) : $value) . "', ";
           }
         }
         
@@ -146,12 +146,11 @@ namespace Core {
         $values = substr($values, 0, -2);
 
         $query = "INSERT INTO {$table} ({$columns}) VALUES ({$values})";
-
+        //var_dump($values); exit();
       }
 
       if (!$this->con->query($query)) { 
         echo $this->con->error;
-        $this->error_function($error);
       } else {
         return $this->con->insert_id;
       }

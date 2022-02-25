@@ -11,8 +11,8 @@
    * @return void
   */
   $db->insert_array([
-    'table' => $data->tableName,
-    'table_data' => (array) $data->data
+    'table' => $data->params->tableName,
+    'table_data' => (array) $data->params->data
   ]);
 
    /** 
@@ -20,6 +20,6 @@
    * tableName
    * @return int
   */
-  echo json_encode($db->getLastItemId($data->tableName));
+  echo json_encode($db->getLastItemId($data->params->tableName)['id']);
 
 ?>
