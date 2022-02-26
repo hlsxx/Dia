@@ -42,20 +42,22 @@
                   </template>
                   <template v-else-if="getStructureValue(colName, 'type', '') == 'lookup'">
                     <template v-if="parseInt(itemData[getStructureValue(colName, 'lookup_table_col')]) > 0">
-                      <!--
+                      <template v-if="getStructureValue(colName, 'lookup_icon')">
                         <a 
-                        onclick="window.event.cancelBubble = true"
-                        :href="getStructureValue(colName, 'lookup_url', '') + '?' 
-                          + getStructureValue(colName, 'lookup_url_type', 'id_form') + 
-                          '=' 
-                          + itemData[getStructureValue(colName, 'lookup_table_col')]
-                        "
-                        class="lookup-icon"
-                      >
-                        <i style='font-size:20px' :class="'fas fa-' + getStructureValue(colName, 'lookup_icon', 'clipboard-list')"></i>
-                      </a>
-                      -->
-                      {{ getLookupValues(colName, getCurrentLookup(colName, item)) }}
+                          onclick="window.event.cancelBubble = true"
+                          :href="getStructureValue(colName, 'lookup_url', '') + '?' 
+                            + getStructureValue(colName, 'lookup_url_type', 'id_form') + 
+                            '=' 
+                            + itemData[getStructureValue(colName, 'lookup_table_col')]
+                          "
+                          class="lookup-icon"
+                        >
+                          <i style='font-size:20px' :class="'fas fa-' + getStructureValue(colName, 'lookup_icon', 'clipboard-list')"></i>
+                        </a>
+                      </template>
+                      <template v-else>
+                        {{ getLookupValues(colName, getCurrentLookup(colName, item)) }}
+                      </template>
                     </template>
                   </template>
                   <template v-else-if="getStructureValue(colName, 'type', 'text') != 'image'">
@@ -183,7 +185,12 @@
                             "
                              class="btn mb-2 mb-md-0 btn-round btn-outline"
                           >
-                            {{ getLookupValues(colName, getCurrentLookup(colName, item)) }}
+                            <template v-if="getStructureValue(colName, 'lookup_icon')">
+                              <i style='font-size:20px' :class="'fas fa-' + getStructureValue(colName, 'lookup_icon', 'clipboard-list')"></i>
+                            </template>
+                            <template v-else>
+                              {{ getLookupValues(colName, getCurrentLookup(colName, item)) }}
+                            </template>
                           </a>
                         </template>
                         <template v-else>
