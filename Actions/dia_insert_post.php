@@ -17,6 +17,33 @@
     require ("{$this->rootDir}/Core/Actions/dia_upload_image.php");
   }
 
+  // Table structure
+  $filePath = \Core\Controllers\WebController::getConfig()['dir']['web']
+    . "/Tables/".ucfirst($tableName).".json"
+  ;
+
+  if (is_file($filePath)) {
+    $stringJson = file_get_contents($filePath);
+    $structure = (array)json_decode($stringJson);
+    $columns = array_keys($structure);
+    
+    $insertData = [];
+    foreach ($columns as $colName) {
+      $insertData[$colName] = $structure[$colName]->type;
+    }
+
+
+    foreach ($data as $postName => $postVal) {
+      if ($insertData[$postName] == "number") {
+        $data[$colName] = (int)$data[$colName];
+      } else if($insertData[$postName] == "checkbox") {
+        $data[$colName] = (int)(bool)$data[$colName];
+      } else if($insertData[$postName] == "lookup") {
+        $data[$colName] = (int)$data[$colName];
+      }
+    }
+  }
+
   /** 
    * INSERT request 
    * tableName

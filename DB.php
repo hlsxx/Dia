@@ -138,7 +138,14 @@ namespace Core {
         foreach ($table_data as $key => $value) {
           if ($key != 'id') {
             $columns .= $key .", ";
-            $values .= "'" . (is_array($value) ? json_encode($value) : $value) . "', ";
+
+            if (is_array($value)) {
+              $values .= "'" . json_encode($value) . "', ";
+            } else if(is_int($value)) {
+              $values .= $value . ", ";
+            } else {
+              $values .= "'" . $value . "', ";
+            }
           }
         }
         
