@@ -90,6 +90,7 @@
                       :class="validateInput(colName)" 
                       :id="'form_' + this.tableName + colName"
                       v-model="formValues[colName]"
+                      :readonly="getStructureValue(colName, 'readonly_in_new')"
                     />
                   </template>
                 </div>
