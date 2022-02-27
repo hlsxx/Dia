@@ -4,7 +4,7 @@ class Dia extends CustomFunctions {
     super();
     this.currentWebPage = this.getCurrentWebPage();
     this.previousWebPage = this.getPreviousWebPage();
-    this.dir = "holes/dia"
+    this.dir = "holes/kobe-brany"
     this.fileDir = "";
 
     this.tableName = "";
