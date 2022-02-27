@@ -59,6 +59,9 @@
                         {{ getLookupValues(colName, getCurrentLookup(colName, item)) }}
                       </template>
                     </template>
+                    <template v-else>
+                      <div v-html="getStructureValue(colName, 'lookup_empty_table')"></div>
+                    </template>
                   </template>
                   <template v-else-if="getStructureValue(colName, 'type', 'text') != 'image'">
                     {{ item }} {{ getStructureValue(colName, 'unit') }}
