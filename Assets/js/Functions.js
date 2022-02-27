@@ -143,6 +143,7 @@ class Functions {
 
           if (initAddForm == true) {
             if (_this.tableStructure[item]['type'] == "checkbox") {
+              console.log(1);
               if (_this.tableStructure[item]['default_value'] == true) {
                 _this.formValues[item] = true;
               } else {
@@ -156,7 +157,11 @@ class Functions {
                 _this.formLookupsValues[item] = res.data['data'];
               })
             } else {
-              _this.formValues[item] = "";
+              if (_this.tableStructure[item]['auto']) {
+                _this.formValues[item] = 9999;
+              } else {
+                _this.formValues[item] = "";
+              }
             }
           }
         });
