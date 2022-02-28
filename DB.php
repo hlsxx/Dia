@@ -385,6 +385,8 @@ namespace Core {
           } else {
             return $data;
           }
+        } else {
+          return [];
         }
       } else {
         throw new \Exception($this->con->error);
