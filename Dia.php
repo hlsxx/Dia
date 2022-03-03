@@ -303,13 +303,18 @@ namespace Core {
       }
     }
 
-    public function AjaxAction() {
+    public function AjaxAction(string $customDir = "") {
       $action = isset($_GET['action']) ? $_GET['action'] : '';
 
       if ((strstr($action, '_', true)) == "dia") {
         return include ("{$this->rootDir}/Core/Actions/" . $action . ".php");
       } else {
-        return include ($this->getWebDir() . "/{$this->config['web']['actions']}/" . $action . ".php");
+        return include (
+          ($customDir != "" 
+            ? $this->config['dir']['root']. "/{$customDir}" 
+            : $this->getWebDir() 
+          ). "/{$this->config['web']['actions']}/" . $action . ".php"
+        );
       }
     }
 
