@@ -167,13 +167,13 @@
                           <div class="radio radio-primary">
                             <input 
                               type="radio" 
-                              :id="index" 
-                              :name="colName" 
+                              :id="colName + '_' + index" 
+                              :name="colName + '_' + index" 
                               :value="index" 
                               v-model="itemData[colName]" 
                               :checked="item == index"
                             />
-                            <label :for="index" class="ml-1"><span>{{ radioItem }}</span></label>
+                            <label :for="colName + '_' + index" class="ml-1"><span>{{ radioItem }}</span></label>
                           </div>                   
                         </div>
                       </template>
