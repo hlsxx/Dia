@@ -220,6 +220,7 @@
                       </template>
                       <template v-else-if="getStructureValue(colName, 'type', '') != 'image'">
                         <input 
+                          @change="onChangeAction(colName, itemData)"
                           :type="getStructureValue(colName, 'type', 'text')" 
                           class="form-control" 
                           :class="classObject(colName)" 
@@ -291,6 +292,9 @@
       })
     },
     methods: {   
+      onChangeAction(colName, itemData) {
+        diaTableLarge.onChangeAction(colName, itemData);
+      },
       getStructureValue(colName, structureParam, defaultReturnParam, addItallic = false) {
         return diaTables.getStructureValue(
           colName, 

@@ -200,4 +200,42 @@ class Dia extends CustomFunctions {
     return returnValue;
   }
 
+  onChangeAction(colName, itemData) {
+    var returnVal;
+
+    var onChange = this.tableStructure[colName]['onchange'];
+
+    if (onChange) {
+      var split = onChange.split("|");
+
+      split.forEach((item, index) => {
+        if (item.includes("{%")) { // Inputs whitch will make something
+          if (index > 1) {
+
+            // If input includes something else e.g.: 1.{%variable%} cut this
+            var startInput = split[index].indexOf("{%");
+            if (startInput > 0) {
+              var inputName = split[index].slice(startInput);
+            } else {
+              var inputName = split[index];
+            }
+
+            inputName = inputName.replace("{%", "");
+            inputName = inputName.replace("%}", "");
+            split[index] = split[index].replace("{%" + inputName + "%}", itemData[inputName]);
+          } else { // This is input which will changed
+            split[index] = split[index].replace("{%", "");
+            split[index] = split[index].replace("%}", "");
+          }
+        }
+      })
+
+      if (split[3] == '/') {
+        returnVal = parseFloat((split[2] / split[4])).toFixed(2);
+      }
+
+      itemData[split[0]] = returnVal;
+    }
+  }
+
 }
