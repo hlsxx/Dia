@@ -24,11 +24,11 @@
   $pagination = \Core\Bice::pagination(
     countTotal: reset($totalCount)['count'],
     currentPage: $data->params->conditions->currentPage ?? 1,
-    count: 15
+    count: 16
   );
 
   $conditions = array_merge(
-    ["limit" => "15 OFFSET {$pagination['offset']}"],
+    ["limit" => "16 OFFSET {$pagination['offset']}"],
     (array)$data->params->conditions ?? [],
   );
 
