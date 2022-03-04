@@ -95,7 +95,7 @@
         }"></dia-pagination>
       </div>
       
-      <div v-show='showEdit' class='card' style='height:750px;width:100%;'>
+      <div v-show='showEdit' class='card' style='min-height:750px;width:100%;'>
         <template v-for='itemData in data'>
           <div v-if="itemData['id'] == showEditId" :key='itemData.id' class="card-header row p-1" style="margin:0px">
             <div class="col">
