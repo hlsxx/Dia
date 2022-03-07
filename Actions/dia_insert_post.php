@@ -4,6 +4,12 @@
 
   $data = \Core\Controllers\WebController::getPostParams();
 
+  // If is not using PHP POST try AJAX POST
+  if (empty($data)) {
+    $data = json_decode(json_encode($db->request_data()), true);
+    $axiosPost = true;
+  }
+
   $tableName = array_pop($data);
 
   if (array_key_exists("password", $data)) {
@@ -28,8 +34,9 @@
     $columns = array_keys($structure);
     
     $insertData = [];
+
     foreach ($columns as $colName) {
-      $insertData[$colName] = $structure[$colName]->type;
+      $insertData[$colName] = $structure[$colName]->type ?? "text";
     }
 
 
@@ -55,10 +62,14 @@
     'table_data' => $data
   ]);
 
-  \Core\Controllers\WebController::redirect(
-    $dia->convertTableNameToUrl($tableName) 
-    . "?id_form=". 
-    $db->getLastItemId($tableName)['id']
-  );
+  if (isset($axiosPost)) {
+    echo json_encode($db->getLastItemId($tableName)['id']);
+  } else {
+    \Core\Controllers\WebController::redirect(
+      $dia->convertTableNameToUrl($tableName) 
+      . "?id_form=". 
+      $db->getLastItemId($tableName)['id']
+    );
+  }
 
 ?>
