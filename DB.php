@@ -153,11 +153,10 @@ namespace Core {
         $values = substr($values, 0, -2);
 
         $query = "INSERT INTO {$table} ({$columns}) VALUES ({$values})";
-        //var_dump($values); exit();
       }
 
       if (!$this->con->query($query)) { 
-        echo $this->con->error;
+        throw new \Exception($this->con->error);
       } else {
         return $this->con->insert_id;
       }

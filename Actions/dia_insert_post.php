@@ -51,25 +51,26 @@
     }
   }
 
-  /** 
-   * INSERT request 
-   * tableName
-   * table_data
-   * @return void
-  */
-  $db->insert_array([
-    'table' => $tableName,
-    'table_data' => $data
-  ]);
+  try {
+    $insertedId = $db->insert_array([
+      'table' => $tableName,
+      'table_data' => $data
+    ]);
 
-  if (isset($axiosPost)) {
-    echo json_encode($db->getLastItemId($tableName)['id']);
-  } else {
-    \Core\Controllers\WebController::redirect(
-      $dia->convertTableNameToUrl($tableName) 
-      . "?id_form=". 
-      $db->getLastItemId($tableName)['id']
-    );
+    if (isset($axiosPost)) {
+      echo $insertedId;
+    } else {
+      \Core\Controllers\WebController::redirect(
+        $dia->convertTableNameToUrl($tableName) 
+        . "?id_form=". 
+        $db->getLastItemId($tableName)['id']
+      );
+    }
+  } catch(\Exception $e) {
+    echo json_encode([
+      "status" => "fail",
+      "message" => $e->getMessage()
+    ]);
   }
 
 ?>
