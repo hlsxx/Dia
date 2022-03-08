@@ -142,25 +142,47 @@ class Functions {
           }
 
           if (initAddForm == true) {
-            if (_this.tableStructure[item]['type'] == "checkbox") {
-              console.log(1);
-              if (_this.tableStructure[item]['default_value'] == true) {
-                _this.formValues[item] = true;
-              } else {
-                _this.formValues[item] = false;
-              }
-            } else if(_this.tableStructure[item]['type'] == "lookup") {
-              _this.formValues[item] = "";
-              this.axiosGet("dia_get_select", {
-                tableName: _this.tableStructure[item]['lookup_table']
-              }, (res) => {
-                _this.formLookupsValues[item] = res.data['data'];
-              })
+            if (typeof _this.defaultValues[item] != "undefined") {
+              _this.formValues[item] = _this.defaultValues[item];
             } else {
-              if (_this.tableStructure[item]['auto']) {
-                _this.formValues[item] = 9999;
-              } else {
+              if (_this.tableStructure[item]['type'] == "checkbox") {
+                if (_this.tableStructure[item]['default_value'] == true) {
+                  _this.formValues[item] = true;
+                } else {
+                  _this.formValues[item] = false;
+                }
+              } else if(_this.tableStructure[item]['type'] == "lookup") {
                 _this.formValues[item] = "";
+                this.axiosGet("dia_get_select", {
+                  tableName: _this.tableStructure[item]['lookup_table']
+                }, (res) => {
+                  _this.formLookupsValues[item] = res.data['data'];
+                })
+              } else {
+                if (_this.tableStructure[item]['auto']) {
+                  _this.formValues[item] = 9999;
+                } else {
+                  _this.formValues[item] = "";
+                }
+              }  if (_this.tableStructure[item]['type'] == "checkbox") {
+                if (_this.tableStructure[item]['default_value'] == true) {
+                  _this.formValues[item] = true;
+                } else {
+                  _this.formValues[item] = false;
+                }
+              } else if(_this.tableStructure[item]['type'] == "lookup") {
+                _this.formValues[item] = "";
+                this.axiosGet("dia_get_select", {
+                  tableName: _this.tableStructure[item]['lookup_table']
+                }, (res) => {
+                  _this.formLookupsValues[item] = res.data['data'];
+                })
+              } else {
+                if (_this.tableStructure[item]['auto']) {
+                  _this.formValues[item] = 9999;
+                } else {
+                  _this.formValues[item] = "";
+                }
               }
             }
           }

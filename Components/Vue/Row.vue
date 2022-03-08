@@ -14,7 +14,8 @@
             <dia-form2 :params='{
               tableName: this.tableName,
               conditions: this.conditions,
-              data: this.data
+              data: this.data,
+              defaultValues: this.defaultValues
             }'></dia-form2>
           </div>
         </div>
@@ -50,7 +51,8 @@ export default {
   props: ['params'],
   data() {
     return Object.assign(diaRow, {
-      componentName: "row"
+      componentName: "row",
+      defaultValues: {}
     });
   },
   beforeCreate() {
@@ -60,6 +62,7 @@ export default {
     f.setComponentParams(this);
 
     this.title = this.params['title'];
+    this.defaultValues = this.params['defaultValues'];
   }
 }
 </script>
