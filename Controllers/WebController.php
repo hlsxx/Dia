@@ -78,7 +78,11 @@ namespace Core\Controllers {
     public static function getPage() {
       global $config;
 
-      $pageToInclude = $config['dir']['web'] . '/' . $config['web']['pages'] . '/' . self::getCurrentPage() . '.php';
+      $page = self::getCurrentPage();
+
+      \Core\Controllers\UserController::checkIfUserLogged($page);
+
+      $pageToInclude = $config['dir']['web'] . '/' . $config['web']['pages'] . '/' . $page . '.php';
 
       if (!is_file($pageToInclude)) {
         $pageToInclude = $config['dir']['web'] . '/' . $config['web']['includes'] . '/' . $config['web']['notfound'] . '.php';

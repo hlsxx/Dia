@@ -35,7 +35,11 @@ namespace Core\Controllers {
     public static function checkIfUserLogged(&$page) {
       if ($page == "login") {
         if (!empty(self::getLogged())) {
-          $page = "home";
+          $page = "moj-ucet";
+        }
+      } else if($page == "moj-ucet") {
+        if (empty(self::getLogged())) {
+          $page = "login";
         }
       }
     }
