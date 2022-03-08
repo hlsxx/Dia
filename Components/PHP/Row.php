@@ -5,6 +5,7 @@ namespace Component {
   class Row extends \Core\Component {
 
     private string $title = "";
+    private array $defaultValues = [];
 
     public function __construct(public string $tableName) {
       parent::__construct($this);
@@ -15,13 +16,19 @@ namespace Component {
       return $this;
     }
 
+    public function defaultValues(array $defaultValues = []) {
+      $this->defaultValues = $defaultValues;
+      return $this;
+    }
+
     public function show() {
       return "
         <dia-row :params='{
           tableName: \"{$this->tableName}\",
           conditions: ".json_encode($this->conditions).",
           data: ".json_encode($this->data).",
-          title: \"{$this->title}\"
+          title: \"{$this->title}\",
+          defaultValues: ".json_encode($this->defaultValues)."
         }'></dia-row>
       ";
     }
