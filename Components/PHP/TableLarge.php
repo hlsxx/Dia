@@ -13,8 +13,12 @@ namespace Component {
     private $showSaveButton = "true";
     private $showDeleteButton = "true";
 
+    private string $structureName = "";
+
     public function __construct(public string $tableName) {
       parent::__construct($this);
+
+      $this->structureName = $tableName;
     }
 
     public function buttons(array $buttons) {
@@ -52,6 +56,11 @@ namespace Component {
       return $this;
     }
 
+    public function useStructure(string $structureName) {
+      $this->structureName = $structureName;
+      return $this;
+    }
+
     public function show() {
       return "
         <dia-table-large :params='{
@@ -64,7 +73,8 @@ namespace Component {
           emptyDataMessage: \"{$this->emptyDataMessage}\",
           fileDir: \"{$this->fileDir}\",
           showSaveButton: \"{$this->showSaveButton}\",
-          showDeleteButton: \"{$this->showDeleteButton}\"
+          showDeleteButton: \"{$this->showDeleteButton}\",
+          structureName: \"{$this->structureName}\"
         }'></dia-table-large>
       ";
     }

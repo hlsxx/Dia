@@ -8,6 +8,7 @@ class Dia extends CustomFunctions {
     this.fileDir = "";
 
     this.tableName = "";
+    this.structureName = "";
     this.data = [];
     this.conditions = [];
     this.tableStructure = [];
@@ -156,6 +157,8 @@ class Dia extends CustomFunctions {
     _this.formColumns = _this.params['formColumns'];
 
     _this.componentName = _this.componentName + "_" + _this.tableName; 
+
+    _this.structureName = _this.params['structureName'];
 
 
     if (typeof _this.params['fileDir'] == "undefined" || _this.params['fileDir'] == "") {

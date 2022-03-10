@@ -119,7 +119,7 @@ class Functions {
 
   initComponent(_this, initAddForm = false, loadDataAction = "", dataToSet = []) {
     this.axiosGet("dia_get_structure", {
-      tableName: _this.tableName
+      tableName: _this.structureName ? _this.structureName : _this.tableName
     },
     (res) => {
       if (res.data.status != 'fail') {
