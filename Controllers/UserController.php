@@ -36,7 +36,6 @@ namespace Core\Controllers {
       if ($page == "login") {
         if (!empty(self::getLogged())) {
           $page = "moj-ucet";
-          self::setCustomerId();
         }
       } else if($page == "moj-ucet") {
         if (empty(self::getLogged())) {
@@ -44,6 +43,10 @@ namespace Core\Controllers {
         }
       }
     }
+
+    //
+    // CUSTOMER
+    //
 
     public static function getCustomerUid() {
       return isset($_COOKIE["customer_uid"]) ? $_COOKIE["customer_uid"] : "";
@@ -117,26 +120,20 @@ namespace Core\Controllers {
       }
     }
 
-    public static function setCustomerId() {
-      global $db;
+    /**
+     * GET logged customer data
+     * @return array
+     */
+    public static function getLoggedCustomer() {
+      return isset($_SESSION['customer']) ? $_SESSION['customer'] : [];
+    }
 
-      $customer = $db->dbSelect(
-        "customers_uids",
-        [
-          "where" => [
-            "id_customer" => self::getLogged()['id']
-          ]
-        ]
-      );
-
-      var_dump($customer); exit();
-
-      $db->insert_array([
-        "table" => "customers_uids",
-        "table_data" => [
-          "uid" => $_COOKIE["customer_uid"]
-        ]
-      ]);
+    /**
+     * GET logged customer id
+     * @return int
+     */
+    public static function getLoggedCustomerId() {
+      return !empty(self::getLoggedCustomer()) ? self::getLoggedCustomer()['id'] : 0;
     }
 
   }
