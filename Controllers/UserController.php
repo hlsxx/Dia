@@ -2,7 +2,7 @@
 
 namespace Core\Controllers {
 
-  class UserController extends \Core\DB {
+  class UserController {
 
     /**
      * SET user SESSION
@@ -42,6 +42,23 @@ namespace Core\Controllers {
           $page = "login";
         }
       }
+    }
+
+    public static function getCustomerUid() {
+      global $db;
+
+      if (empty($_COOKIE["customer_uid"])) {
+        $_COOKIE["customer_uid"] = \Core\Bice::getuid();
+
+        $db->insert_array([
+          "table" => "customers_uids",
+          "table_data" => [
+            "uid" => $_COOKIE["customer_uid"]
+          ]
+        ]);
+      }
+
+      return $_COOKIE["customer_uid"];
     }
 
   }
