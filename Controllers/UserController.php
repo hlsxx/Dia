@@ -67,13 +67,25 @@ namespace Core\Controllers {
         $carts = $db->dbSelect(
           "carts",
           [
-            "where" => [
-              "id_customer_uid" => reset($customers)['id']
+            "whereArray" => [
+              ["id_customer_uid", "=", reset($customers)['id']],
+              ["is_order", "=", 0]
             ]
           ]
         );
+        
+        if (empty($carts)) {
+          $idCart = $db->insert_array([
+            'table' => "carts",
+            'table_data' => [
+              "id_customer_uid" => reset($customers)['id']
+            ]
+          ]);
+        } else {
+          $idCart = reset($carts)['id'];
+        }
 
-        return reset($carts)['id'];
+        return $idCart;
       }
     }
 
