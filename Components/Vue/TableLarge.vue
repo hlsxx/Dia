@@ -240,7 +240,9 @@
                             width="100" 
                             height="100"
                           />
-                          <div class='pt-4 pl-3'>
+                          <div
+                            v-if="!getStructureValue(colName, 'readonly')" 
+                            class='pt-4 pl-3'>
                             <dia-file-uploader :params="{
                               tableName: this.tableName,
                               uploadAction: getStructureValue(colName, 'upload_action'),
