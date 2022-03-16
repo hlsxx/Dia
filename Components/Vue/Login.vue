@@ -2,7 +2,17 @@
   <div>
     <div class='cotainer' style="margin-left:25%;margin-right:25%;margin-top:5%">
       <div class='card'>
-        <div class='card-header'>Prihlásenie</div>
+        <div class='card-header'>
+          <div class="row">
+            <div class="col-6">
+              <a href="https://github.com/Bombarder70/Dia">
+                <b style="color:#0a6c91">DIA CMS</b>
+              </a>
+            </div>
+             <div class="col-6 text-right">
+            </div>
+          </div>
+        </div>
         <div class='card-body'>
           <div :id="componentName">
               <form 
@@ -10,7 +20,7 @@
                 action="index.php?action=dia_login" 
                 method="POST"
               > 
-                <div class="text-center">
+                <div class="text-center ml-5 pl-4">
                   <h5 v-if="loginError && passwordError" class="color-primary">Prihlasovacie údaje su nesprávne</h5>
                 </div>
                 <div class='form-group row'>
