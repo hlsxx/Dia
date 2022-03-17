@@ -142,12 +142,13 @@
 
         if (uploadFile == true) {
           axios.post('index.php?action=dia_insert', {
-            'tableName': this.tableName,
-            'data': {
-              'user_id': 1,
-              'test_id': 1,
-              'filename': file.name,
-              'size': file.size
+            params: {
+              tableName: this.tableName,
+              data: {
+                'id_complaint': 1,
+                'filename': file.name,
+                'size': file.size
+              }
             }
           }).then((res) => {
             // Res return item ID and then push into array
