@@ -54,7 +54,7 @@
                 </div>
               </div>
               <hr>
-              <div class='row'>
+              <div v-if="showEdit" class='row'>
                 <div class='col-sm-12'>
                   <dia-button :params="{
                     button: 'primary',
