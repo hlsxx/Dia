@@ -201,21 +201,23 @@ class Functions {
     this.emptyRequiredInputs = [];
     customAction = customAction != "" ? customAction : "dia_select";
 
-    this.axiosPost(customAction, {
-      tableName: _this.tableName,
-      conditions: _this.conditions
-    },
-    (res) => {
-      if (res.data.status != 'fail') {
-        _this.data = res.data['data'];
-        dataToSet.forEach((item) => {
-          _this[item] = res.data[item];
-        })
-      } else {
-        _this.error = true;
-        console.log(res);
-      }
-    })
+    if (_this["data"].length == 0) {
+      this.axiosPost(customAction, {
+        tableName: _this.tableName,
+        conditions: _this.conditions
+      },
+      (res) => {
+        if (res.data.status != 'fail') {
+          _this.data = res.data['data'];
+          dataToSet.forEach((item) => {
+            _this[item] = res.data[item];
+          })
+        } else {
+          _this.error = true;
+          console.log(res);
+        }
+      })
+    }
   }
 
   loadLookups(_this) {
