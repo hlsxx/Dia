@@ -24,6 +24,7 @@ import Timer from './Timer.vue';
 import Form from './Form2.vue';
 import Messages from './Messages.vue';
 import Chart from './Chart.vue';
+import TableLarge from './TableLarge.vue';
 
 export default {
   props: ['params'],
@@ -31,7 +32,8 @@ export default {
 		'dia-timer': Timer,
 		'dia-form': Form,
 		'dia-messages': Messages,
-		'chart': Chart
+		'chart': Chart,
+		'dia-table-large': TableLarge
 	},
   data() {
     return Object.assign(diaModal, {
