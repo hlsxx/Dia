@@ -465,9 +465,9 @@
         this.showEditId = diaTableLarge.getUrlParam('id_form');
       }
 
-      this.buttons = this.params['buttons'];
-      this.tableButtons = this.params['tableButtons'];
-      this.customColumns = this.params['customColumns'];
+      //this.buttons = this.params['buttons'];
+      //this.tableButtons = this.params['tableButtons'];
+      //this.customColumns = this.params['customColumns'];
 
       this.emptyDataMessage = 
         this.params['emptyDataMessage'] 
