@@ -252,7 +252,7 @@ namespace Core {
     /**
      * GET table last item id
      * tableName
-     * @return int
+     * @return array
      */
     public function getLastItem($tableName) {
       $query = "SELECT * FROM {$tableName} ORDER BY id desc LIMIT 1";
