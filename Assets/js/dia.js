@@ -1,10 +1,9 @@
-class Dia extends CustomFunctions {
+class Dia extends Config {
 
   constructor() {
     super();
     this.currentWebPage = this.getCurrentWebPage();
     this.previousWebPage = this.getPreviousWebPage();
-    this.dir = "holes/kobe-brany"
     this.fileDir = "";
 
     this.tableName = "";
@@ -60,6 +59,11 @@ class Dia extends CustomFunctions {
   getUrlParam(param) {
     var params = this.getSearchParameters();
     return params[param];
+  };
+
+  getLastWord(stringToCut, delimeter) {
+    var n = stringToCut.split(delimeter);
+    return n[n.length - 1];
   };
 
   getUrl() {

@@ -11,7 +11,7 @@
             </button>
           </div>
           <div class="model-img modal-body text-center">
-            <img :src="'http://localhost/' + this.dir + '/files/products/' + itemEdit['image']" :alt="itemEdit['image']">
+            <img :src="this.host + '/files/products/' + itemEdit['image']" :alt="itemEdit['image']">
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
         >
         <div @click="edit(item)" data-toggle="modal" data-target="#exampleModalCenter" class="fancybox" rel="ligthbox">
           <div class="dia-image">
-            <img :src="'http://localhost/' + this.dir + '/files/products/' + item['image']" class="zoom img-fluid"  :alt="item['image']">
+            <img :src="this.host + '/files/products/' + item['image']" class="zoom img-fluid"  :alt="item['image']">
             <button 
               @click="itemDelete(item.id)"
               class="btn btn-danger btn-image-delete text-center"

@@ -68,7 +68,7 @@
                   </template>
                   <template v-else>
                     <img 
-                      :src="'http://localhost/'+ this.dir +'/files/'  + this.fileDir + '/' + checkImage(itemData['image'])" 
+                      :src="this.host +'/files/'  + this.fileDir + '/' + checkImage(itemData['image'])" 
                       width="35" 
                       height="35"
                     />
@@ -236,7 +236,7 @@
                       <template v-else>
                         <div :class="imageRequired(colName)">
                           <img 
-                            :src="'http://localhost/'+ this.dir +'/files/' + this.fileDir + '/' + checkImage(itemData['image'])" 
+                            :src="this.host + '/files/' + this.fileDir + '/' + checkImage(itemData['image'])" 
                             width="100" 
                             height="100"
                           />
