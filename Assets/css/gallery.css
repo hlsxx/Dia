@@ -50,9 +50,6 @@
 .modal-footer{
   display:none;  
 }
-.btn-image-delete {
-  position: absolute;
-  margin-left: -44px;
-  margin-top: 4px;
+.modal-body img {
+  width: 100%;
 }
-

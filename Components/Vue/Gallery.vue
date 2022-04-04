@@ -25,15 +25,18 @@
         <div @click="edit(item)" data-toggle="modal" data-target="#exampleModalCenter" class="fancybox" rel="ligthbox">
           <div class="dia-image">
             <img :src="this.host + '/files/products/' + item['image']" class="zoom img-fluid"  :alt="item['image']">
-            <button 
-              @click="itemDelete(item.id)"
-              class="btn btn-danger btn-image-delete text-center"
-            >
-              <i class="fas fa-trash-alt color-red-dark"/>
-            </button>
           </div>
         </div>
-      </div>
+  
+        <button 
+          @click="itemDelete(item.id)"
+          class="btn btn-outline-danger text-center mt-2"
+          style="width:100%"
+        >
+          <i class="fas fa-trash-alt color-red-dark"/>
+        </button>
+    </div>
+      
     </div>
     <div v-else>
       <h5 class="text-center">Žiadne obrázky</h5>
