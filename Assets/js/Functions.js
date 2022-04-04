@@ -197,11 +197,11 @@ class Functions {
     })
   }
 
-  loadData(_this, customAction = "", dataToSet = []) {
+  loadData(_this, customAction = "", dataToSet = [], reload = false) {
     this.emptyRequiredInputs = [];
     customAction = customAction != "" ? customAction : "dia_select";
 
-    if (_this["data"].length == 0) {
+    if (_this["data"].length == 0 || reload) {
       this.axiosPost(customAction, {
         tableName: _this.tableName,
         conditions: _this.conditions

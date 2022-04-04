@@ -323,7 +323,7 @@
         f.loadData(this, "dia_select_with_pagination", this.dataToSet);
       },
       loadData() {
-        f.loadData(this, "dia_select_with_pagination", this.dataToSet);
+        f.loadData(this, "dia_select_with_pagination", this.dataToSet, true);
       },
       save(itemData) {
         // Prever prazdne povinne polia
