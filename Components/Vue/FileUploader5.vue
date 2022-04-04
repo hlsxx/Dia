@@ -36,10 +36,10 @@ export default {
     if (this.params['idItem'] > 0) {
       this.idItem = this.params['idItem'];
     } else {
-      this.idItem = dia.getUrlParam('id');
+      this.idItem = f.getUrlParam('id');
     }
     
-    this.redirect = dia.getUrl();
+    this.redirect = f.getUrl();
 
     if (this.params['uploadText']) {
       this.uploadText = this.params['uploadText'];

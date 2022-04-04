@@ -129,7 +129,7 @@
       if (this.params['error'] == true) {
         this.loginError = true;
         this.passwordError = true;
-        diaLogin.deleteFromUrl("error");
+        f.deleteFromUrl("error");
       }
     }
   }

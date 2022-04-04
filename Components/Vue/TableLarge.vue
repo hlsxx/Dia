@@ -313,13 +313,13 @@
       edit(showEditId) {
         this.showEdit = true;
         this.showEditId = showEditId;
-        diaTableLarge.addToUrl('id_form', showEditId);
-        diaTableLarge.refactorCustomLinks(this);
+        f.addToUrl('id_form', showEditId);
+        f.refactorCustomLinks(this);
         this.recoveryData = this.data;
       },
       hideEdit() {
         this.showEdit = false;
-        diaTableLarge.deleteFromUrl('id_form');
+        f.deleteFromUrl('id_form');
         f.loadData(this, "dia_select_with_pagination", this.dataToSet);
       },
       loadData() {
@@ -338,7 +338,7 @@
             }
           }).then(() => {
             this.showEdit = false;
-            diaTableLarge.deleteFromUrl('id_form');
+            f.deleteFromUrl('id_form');
             f.loadData(this, "dia_select_with_pagination", this.dataToSet);
             swal({
               title: "Uložené",
@@ -413,7 +413,7 @@
           if (item.toString() != "get") {
             params[item] = itemData[customColumn['params'][item]];
           } else {
-            params[customColumn['params'][item]] = diaTableLarge.getUrlParam('id');
+            params[customColumn['params'][item]] = f.getUrlParam('id');
           }
         })
     
@@ -460,9 +460,9 @@
       f.initComponent(this, false, "dia_select_with_pagination", this.dataToSet);
 
       // Custom Component functions
-      if (diaTableLarge.getUrlParam('id_form') > 0) {
+      if (f.getUrlParam('id_form') > 0) {
         this.showEdit = true;
-        this.showEditId = diaTableLarge.getUrlParam('id_form');
+        this.showEditId = f.getUrlParam('id_form');
       }
 
       //this.buttons = this.params['buttons'];

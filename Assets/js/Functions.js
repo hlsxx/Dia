@@ -284,4 +284,20 @@ class Functions {
     return params[param];
   };
 
+  getUrl() {
+    return window.location.href;
+  }
+
+  refactorCustomLinks(_this) {
+    if (_this.params['buttons'].length > 0) {
+      _this.params['buttons'].forEach((button) => {
+        if (button['customLink'].includes('{%')) {
+          let cutOne = button['customLink'].substring(button['customLink'].indexOf('{%') + 2);
+          let paramToReplace = cutOne.slice(0, cutOne.indexOf('%}'));
+          button['customLink'] = button['customLink'].replace("{%" + paramToReplace + "%}", this.getUrlParam(paramToReplace));
+        }
+      })
+    }
+  }
+
 }

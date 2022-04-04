@@ -41,7 +41,7 @@ export default {
   beforeMount() {
     f.setComponentParams(this);
 
-    diaButton.setComponentParams(this);
+    f.setComponentParams(this);
   }
 }
 
