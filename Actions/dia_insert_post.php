@@ -15,7 +15,7 @@
   if (array_key_exists("password", $data)) {
     $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
   }
-;
+
   if (!empty($_FILES)) {
     if (isset($_FILES['size']) && $_FILES["size"] > 0) {
       $colNameFile = array_key_first($_FILES);
