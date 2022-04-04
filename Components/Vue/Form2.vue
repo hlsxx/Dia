@@ -83,7 +83,7 @@
                   </template>
                   <template v-else>
                     <input 
-                      @change="onChangeAction(colName, itemData)"
+                      @change="onChangeAction(colName, formValues)"
                       :placeholder="getStructureValue(colName, 'name_in_table', colName)"
                       :type="getStructureValue(colName, 'type', colName)"
                       :name="colName"  
@@ -143,7 +143,7 @@ export default {
       return diaForm.getLookupValues(colName, col);
     },
     onChangeAction(colName, itemData) {
-      diaTables.onChangeAction(colName, itemData);
+      diaForm.onChangeAction(colName, itemData);
     },
   },
   beforeCreate() {
