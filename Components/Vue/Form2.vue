@@ -29,8 +29,11 @@
                       :class="validateInput(colName)"
                       :name="colName" 
                       :id="'form_' + this.tableName + colName"
-                      :value="formValues[colName]" 
+                      :value="formValues[colName]"
+                      true-value="1"
+                      false-value="0" 
                       :checked="getStructureValue(colName, 'default_value') == 1"
+                      v-model="formValues[colName]"
                     />
                   </template>
                   <template v-else-if="getStructureValue(colName, 'type') == 'radio'">
@@ -38,14 +41,14 @@
                       <div class="radio radio-primary">
                         <input 
                           type="radio" 
-                          :id="'form_' + this.tableName + colName" 
+                          :id="'form_' + this.tableName + '_' + colName + '_' + index" 
                           :name="colName" 
                           :value="index" 
                           :class="validateInput(colName)"
                           v-model="formValues[colName]" 
                           :checked="getStructureValue(colName, 'default_value') == index"
                         />
-                        <label :for="index" class="ml-1"><span>{{ radioItem }}</span></label>
+                        <label :for="'form_' + this.tableName + '_' + colName + '_' + index" class="ml-1"><span>{{ radioItem }}</span></label>
                       </div>  
                     </div>
                   </template>
