@@ -129,8 +129,11 @@ namespace Core {
           $returnHtml .= "
             <div style='
               padding-left:10px;
+              padding-top:10px;
+              margin-right:-10px;
+              margin-bottom:-10px;
               border:1px solid #cccccc;
-              border-radius:5px;
+              border-radius:2px;
               ".($i != $paramsLength + 1 ? 'background:#ebebeb' : 'background:#f8f9fa;').";
             '>
           ";
