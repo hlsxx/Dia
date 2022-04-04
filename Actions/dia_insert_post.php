@@ -15,12 +15,16 @@
   if (array_key_exists("password", $data)) {
     $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
   }
-
-  if (!empty($_FILES) && $_FILES['size'] > 0) {
-    $colNameFile = array_key_first($_FILES);
-    $uploadToDir = $tableName;
-    $data[$colNameFile] = $_FILES[$colNameFile]['name'];
-    require ("{$this->rootDir}/Core/Actions/dia_upload_image.php");
+;
+  if (!empty($_FILES)) {
+    if (isset($_FILES['size']) && $_FILES["size"] > 0) {
+      $colNameFile = array_key_first($_FILES);
+      $uploadToDir = $tableName;
+      $data[$colNameFile] = $_FILES[$colNameFile]['name'];
+      require ("{$this->rootDir}/Core/Actions/dia_upload_image.php");
+    } else {
+      $data["image"] = "default.jpg"; // Set default image
+    }
   }
 
   // Table structure
