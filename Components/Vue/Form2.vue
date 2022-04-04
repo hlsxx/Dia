@@ -96,6 +96,9 @@
                       v-model="formValues[colName]"
                       :readonly="getStructureValue(colName, 'readonly_in_new')"
                     />
+                    <div v-if="getStructureValue(colName, 'unit')" class="input-group-append">
+                      <span class="input-group-text">{{ getStructureValue(colName, 'unit') }}</span>
+                    </div>
                   </template>
                 </div>
               </div>
