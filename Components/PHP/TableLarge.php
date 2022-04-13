@@ -15,9 +15,10 @@ namespace Component {
 
     private string $structureName = "";
 
-    public function __construct(public string $tableName) {
+    public function __construct(string $tableName) {
       parent::__construct($this);
 
+      $this->tableName = $tableName;
       $this->structureName = $tableName;
     }
 
