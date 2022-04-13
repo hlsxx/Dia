@@ -7,24 +7,14 @@
   $conditions = array_merge((array)$data->params->conditions, ["select" => "count(*) as count"]);
 
   $totalCount = $db->dbSelect(
-    tableName: $data->params->tableName, 
-    conditions: $conditions
+    $data->params->tableName, 
+    $conditions
   );
 
-  /*$totalCount = $db->dbSelect(
-    tableName: $data->params->tableName, 
-    conditions: [
-      "select" => "count(*) as count",
-      "whereArray" => [
-        ["type", "=", 1]
-      ]
-    ]
-  );*/
-
   $pagination = \Core\Bice::pagination(
-    countTotal: reset($totalCount)['count'],
-    currentPage: $data->params->conditions->currentPage ?? 1,
-    count: 16
+    reset($totalCount)['count'],
+    $data->params->conditions->currentPage ?? 1,
+    16
   );
 
   $conditions = array_merge(
@@ -34,8 +24,8 @@
 
   try {
     $return['data'] = $db->dbSelect(
-      tableName: $data->params->tableName,
-      conditions: $conditions
+      $data->params->tableName,
+      $conditions
     );
     $return['pages'] = $pagination['pages'];
 
