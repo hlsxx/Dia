@@ -201,12 +201,12 @@
                             <div v-html="getStructureValue(colName, 'lookup_empty_table', '')"/>
                           </template>
                           <template v-else-if="getStructureValue(colName, 'lookup_empty_action')">
-                            <a
-                              :href="'index.php?action=' + getLookupAction(colName, itemData['id'])"
+                            <button
+                              @click="getLookupAction(colName, itemData)"
                               class="btn btn-warning"
                             >
                               {{ getStructureValue(colName, 'lookup_table_empty_text', 'Akcia') }}
-                            </a>
+                            </button>
                           </template>
                         </template> 
                       </template>
@@ -397,14 +397,30 @@
       getLookupValues(colName, col) {
         return diaTableLarge.getLookupValues(colName, col);
       },
-      getLookupAction(colName, id) {
+      getLookupAction(colName, itemData) {
         var action = this.getStructureValue(colName, 'lookup_table_empty_action', 'action');
+        var params = this.getStructureValue(colName, 'lookup_table_empty_action_params');
 
         if (action != "action") {
-          action = action.replace("%id%", id);
+          Object.keys(params).forEach((param) => {
+            if (params[param].toString().includes("{%")) {
+              params[param] = params[param].replace("{%", "");
+              params[param] = params[param].replace("%}", "");
+            }
+            params[param] = itemData[params[param]];
+          })
+
+          f.axiosPost(
+            action, 
+            {
+              tableName: this.getStructureValue(colName, 'lookup_table'),
+              data: params
+            }, 
+            (res) => console.log(res)
+          );
         }
 
-        return action;
+        //return action;
       },
       customColumnAction(customColumn, itemData) {
         var params = {};
