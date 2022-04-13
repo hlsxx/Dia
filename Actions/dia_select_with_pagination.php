@@ -12,9 +12,9 @@
   );
 
   $pagination = \Core\Bice::pagination(
-    reset($totalCount)['count'],
     $data->params->conditions->currentPage ?? 1,
-    16
+    16,
+    reset($totalCount)['count']
   );
 
   $conditions = array_merge(
