@@ -6,10 +6,10 @@
 
   try {
     $db->dbUpdateRow(
-      tableName: $data->params->tableName, 
-      rowId: $data->params->tableId,
-      column: $data->params->column,
-      data: $data->params->data
+      $data->params->tableName, 
+      $data->params->tableId,
+      $data->params->column,
+      $data->params->data
     );
   } catch(\Exception $e) {
     echo json_encode([
