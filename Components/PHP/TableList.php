@@ -10,8 +10,10 @@ namespace Component {
     private string $actionButton = "";
     private string $hideValue = "";
 
-    public function __construct(public string $tableName) {
+    public function __construct(string $tableName) {
       parent::__construct($this);
+
+      $this->tableName = $tableName;
     }
 
     public function columns(array $columns) : object {

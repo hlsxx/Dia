@@ -7,8 +7,10 @@ namespace Component {
     private string $title = "";
     private array $defaultValues = [];
 
-    public function __construct(public string $tableName) {
+    public function __construct(string $tableName) {
       parent::__construct($this);
+
+      $this->tableName = $tableName;
     }
 
     public function title(string $title) {

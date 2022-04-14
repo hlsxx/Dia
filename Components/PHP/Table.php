@@ -19,8 +19,10 @@ namespace Component {
     private int $count = 10;
     private int $currentPage = 0;
 
-    public function __construct(public String $tableName) {
+    public function __construct(string $tableName) {
       parent::__construct($this);
+
+      $this->tableName = $tableName;
     }
 
     public function sql() {

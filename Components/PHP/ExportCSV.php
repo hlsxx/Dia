@@ -4,8 +4,10 @@ namespace Component;
 
 class ExportCSV extends \Core\Component {
   
-  public function __construct(public string $tableName) {
+  public function __construct(string $tableName) {
     parent::__construct($this);
+
+    $this->tableName = $tableName;
   }
 
   public function show() {

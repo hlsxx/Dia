@@ -6,8 +6,10 @@ namespace Component {
 
     public array $conditions = ["select" => "structure"];
 
-    public function __construct(public string $tableName) {
+    public function __construct(string $tableName) {
       parent::__construct($this);
+
+      $this->tableName = $tableName;
     }
 
     public function show() {

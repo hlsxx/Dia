@@ -6,8 +6,10 @@ namespace Component {
 
     public bool $error = false;
 
-    public function __construct(public String $tableName) {
+    public function __construct(string $tableName) {
       parent::__construct($this);
+
+      $this->tableName = $tableName;
     }
 
     public function loginInput(string $loginInput) {

@@ -6,8 +6,10 @@ namespace Component {
 
     private array $defaultValues = [];
 
-    public function __construct(public string $tableName) {
+    public function __construct(string $tableName) {
       parent::__construct($this);
+
+      $this->tableName = $tableName;
     }
 
     public function defaultValues(array $defaultValues = []) {
