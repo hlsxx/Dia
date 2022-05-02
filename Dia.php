@@ -39,7 +39,7 @@ namespace Core {
     }
 
     private function najdi_vue_componenty() {
-      $pages = scandir(__DIR__ . "/../web/" . $this->config['web']['vue_components']);
+      $pages = scandir($this->config['dir']['web'] . '/' . $this->config['web']['vue_components']);
 
       foreach ($pages as $page) {
       $this->components[] = substr($page, 0, -4);
