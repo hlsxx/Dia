@@ -190,24 +190,24 @@ namespace Core {
 
       if ($this->config['web']['dropzone']) {
         $dropzone = "
-          <link rel='stylesheet' type='text/css' href='//{$this->config['host']}/node_modules/dropzone/dist/basic.css'>
-          <link rel='stylesheet' type='text/css' href='//{$this->config['host']}/node_modules/dropzone/dist/dropzone.css'>
+          <link rel='stylesheet' type='text/css' href='//{$this->config['nodeModulesUrl']}/dropzone/dist/basic.css'>
+          <link rel='stylesheet' type='text/css' href='//{$this->config['nodeModulesUrl']}/dropzone/dist/dropzone.css'>
           <link rel='stylesheet' type='text/css' href='//{$this->config['coreUrl']}/Assets/css/sweetalert.css'>
           <link rel='stylesheet' type='text/css' href='//{$this->config['coreUrl']}/Assets/css/fancybox.css'>
           <link rel='stylesheet' type='text/css' href='//{$this->config['coreUrl']}/Assets/css/gallery.css'>
-          <script src='//{$this->config['host']}/node_modules/dropzone/dist/dropzone-min.js'></script>
+          <script src='//{$this->config['nodeModulesUrl']}/dropzone/dist/dropzone-min.js'></script>
         ";
       }
 
       if ($this->config['web']['vue']) {
         $vue = "
-          <script src='//{$this->config['host']}/node_modules/vue/dist/vue.global.prod.js'></script>
-          <script src='//{$this->config['host']}/node_modules/axios/dist/axios.min.js'></script>
-          <script src='//{$this->config['host']}/node_modules/chart.js/dist/chart.min.js'></script>
-          <script src='//{$this->config['host']}/node_modules/jquery/dist/jquery.min.js'></script>
-          <script src='//{$this->config['host']}/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'></script>
-          <script src='//{$this->config['host']}/node_modules/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
-          <script src='//{$this->config['host']}/node_modules/mitt/dist/mitt.umd.js'></script>
+          <script src='//{$this->config['nodeModulesUrl']}/vue/dist/vue.global.prod.js'></script>
+          <script src='//{$this->config['nodeModulesUrl']}/axios/dist/axios.min.js'></script>
+          <script src='//{$this->config['nodeModulesUrl']}/chart.js/dist/chart.min.js'></script>
+          <script src='//{$this->config['nodeModulesUrl']}/jquery/dist/jquery.min.js'></script>
+          <script src='//{$this->config['nodeModulesUrl']}/bootstrap/dist/js/bootstrap.bundle.min.js'></script>
+          <script src='//{$this->config['nodeModulesUrl']}/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
+          <script src='//{$this->config['nodeModulesUrl']}/mitt/dist/mitt.umd.js'></script>
           <script src='//{$this->config['coreUrl']}/Assets/js/Functions.js'></script>
           <script src='//{$this->config['host']}/config.js'></script>
           <script src='//{$this->config['coreUrl']}/Assets/js/dia.js'></script>
