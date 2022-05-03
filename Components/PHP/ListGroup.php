@@ -7,7 +7,7 @@ namespace Component {
     private string $title = '';
     private string $bubble = '';
     private string $url = '';
-    private array $data = [];
+    public array $data = [];
 
     public function __construct(array $data = []) {
       parent::__construct($this);
