@@ -185,16 +185,16 @@ namespace Core {
       }
 
       if ($this->config['web']['bootstrap']) {
-        $bootstrap .= "<link rel='stylesheet' href='//{$this->config['host']}/Core/Assets/css/style.css'>";
+        $bootstrap .= "<link rel='stylesheet' href='//{$this->config['coreUrl']}/Assets/css/style.css'>";
       }
 
       if ($this->config['web']['dropzone']) {
         $dropzone = "
           <link rel='stylesheet' type='text/css' href='//{$this->config['host']}/node_modules/dropzone/dist/basic.css'>
           <link rel='stylesheet' type='text/css' href='//{$this->config['host']}/node_modules/dropzone/dist/dropzone.css'>
-          <link rel='stylesheet' type='text/css' href='//{$this->config['host']}/Core/Assets/css/sweetalert.css'>
-          <link rel='stylesheet' type='text/css' href='//{$this->config['host']}/Core/Assets/css/fancybox.css'>
-          <link rel='stylesheet' type='text/css' href='//{$this->config['host']}/Core/Assets/css/gallery.css'>
+          <link rel='stylesheet' type='text/css' href='//{$this->config['coreUrl']}/Assets/css/sweetalert.css'>
+          <link rel='stylesheet' type='text/css' href='//{$this->config['coreUrl']}/Assets/css/fancybox.css'>
+          <link rel='stylesheet' type='text/css' href='//{$this->config['coreUrl']}/Assets/css/gallery.css'>
           <script src='//{$this->config['host']}/node_modules/dropzone/dist/dropzone-min.js'></script>
         ";
       }
@@ -208,12 +208,12 @@ namespace Core {
           <script src='//{$this->config['host']}/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'></script>
           <script src='//{$this->config['host']}/node_modules/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
           <script src='//{$this->config['host']}/node_modules/mitt/dist/mitt.umd.js'></script>
-          <script src='//{$this->config['host']}/Core/Assets/js/Functions.js'></script>
+          <script src='//{$this->config['coreUrl']}/Assets/js/Functions.js'></script>
           <script src='//{$this->config['host']}/config.js'></script>
-          <script src='//{$this->config['host']}/Core/Assets/js/dia.js'></script>
-          <script src='//{$this->config['host']}/Core/Assets/js/diaTables.js'></script>
-          <script src='//{$this->config['host']}/Core/Assets/js/fontawesome.js'></script>
-          <script src='//{$this->config['host']}/Core/Assets/js/sweetalert.js'></script>
+          <script src='//{$this->config['coreUrl']}/Assets/js/dia.js'></script>
+          <script src='//{$this->config['coreUrl']}/Assets/js/diaTables.js'></script>
+          <script src='//{$this->config['coreUrl']}/Assets/js/fontawesome.js'></script>
+          <script src='//{$this->config['coreUrl']}/Assets/js/sweetalert.js'></script>
         ";
       }
 
@@ -274,10 +274,10 @@ namespace Core {
 
         if (strpos($className, "/")) $parts = explode("/", $className);
 
-        if (file_exists($this->config['dir']['root'] . '/' . $className . '.php')) {
-          require_once $this->config['dir']['root'] . '/' . $className . '.php';
-        } else if (file_exists($this->config['dir']['root']. "/Core/Components/PHP/{$parts[1]}.php")) {
-          require_once $this->config['dir']['root'] . "/Core/Components/PHP/{$parts[1]}.php";
+        if (file_exists($this->config['core']. '/../' . $className . '.php')) {
+          require_once $this->config['core'] . '/../' . $className . '.php';
+        } else if (file_exists($this->config['core']. "/Components/PHP/{$parts[1]}.php")) {
+          require_once $this->config['core'] . "/Components/PHP/{$parts[1]}.php";
         }
 
       });
@@ -310,7 +310,7 @@ namespace Core {
       $action = isset($_GET['action']) ? $_GET['action'] : '';
 
       if ((strstr($action, '_', true)) == "dia") {
-        return include ("{$this->rootDir}/Core/Actions/" . $action . ".php");
+        return include ("{$this->config['core']}/Actions/" . $action . ".php");
       } else {
         return include (
           ($customDir != "" 
