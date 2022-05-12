@@ -15,8 +15,8 @@ if (is_file($filePath)) {
 }*/
 
 $navbarList = $db->dbSelect(
-  tableName: $tableName,
-  conditions: [
+  $tableName,
+  [
     "order_by" => "order_index ASC"
   ]
 );
