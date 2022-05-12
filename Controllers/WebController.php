@@ -81,6 +81,7 @@ namespace Core\Controllers {
       $page = self::getCurrentPage();
 
       \Core\Controllers\UserController::checkIfUserLogged($page);
+      //$userData = \Core\Controllers\UserController::getLogged();
 
       $pageToInclude = $config['dir']['web'] . '/' . $config['web']['pages'] . '/' . $page . '.php';
 
