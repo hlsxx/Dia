@@ -330,7 +330,7 @@
         this.emptyRequiredInputs = diaTableLarge.checkRequiredInputs(itemData, this.tableStructure);
 
         if (this.emptyRequiredInputs.length < 1) {
-          axios.put('index.php?action=dia_vue_update', {
+          axios.post('index.php?action=dia_vue_update', {
             params: {
               tableName: this.tableName,
               rowId: itemData['id'],
@@ -432,8 +432,8 @@
             params[customColumn['params'][item]] = f.getUrlParam('id');
           }
         })
-    
-        axios.put('index.php?action=' + customColumn['action'], {
+
+        axios.post('index.php?action=' + customColumn['action'], {
           tableName: customColumn['tableName'],
           data: params
         }).then((res) => {
