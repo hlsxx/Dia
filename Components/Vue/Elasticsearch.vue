@@ -4,7 +4,7 @@
       <input 
         class="form-control col" 
         type="search" 
-        placeholder="Search" 
+        placeholder="Hľadať" 
         aria-label="Search"
         v-model="search"
       />
