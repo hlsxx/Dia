@@ -228,6 +228,10 @@ namespace Core {
       return json_decode(file_get_contents("php://input"));
     }
 
+    public function getPostRequest() {
+      return json_decode(file_get_contents("php://input"), TRUE)["params"];
+    }
+
     /**
      * GET table last item id
      * tableName
@@ -300,6 +304,15 @@ namespace Core {
         foreach ($conditions['join'] as $joinTableName => $columns) {
           $query = $query . " LEFT JOIN {$joinTableName} ON {$tableName}.{$columns[0]} = {$joinTableName}.{$columns[1]}";
         }
+      }
+
+      /**
+       * LIKE
+       */
+      if (array_key_exists("like", $conditions)) {
+        $colName = array_keys($conditions['like'])[0];
+        $value = array_values($conditions['like'])[0];
+        $query .= " WHERE {$colName} LIKE '%{$value}%'";
       }
 
       /**

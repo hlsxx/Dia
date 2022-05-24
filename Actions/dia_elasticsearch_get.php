@@ -3,7 +3,7 @@
   global $client;
 
   // GET data from AXIOS POST
-  $data = $db->request_data();
+  $data = $db->getPostRequest();
 
   // If search input is NOT empty
   if ($data->search != "") {
