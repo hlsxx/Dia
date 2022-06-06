@@ -6,9 +6,9 @@
 
   try {
     $db->update(
-      tableName: $data->tableName,
-      rowId: $data->data->id,
-      data: ["viewed" => 1]
+      $data->tableName,
+      $data->data->id,
+      ["viewed" => 1]
     );
 
     $return['data'] = $db->dbSelect(
