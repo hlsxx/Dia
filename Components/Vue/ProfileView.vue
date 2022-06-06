@@ -7,7 +7,7 @@
             <div class='card-body'>
               <div class='d-flex flex-column align-items-center text-center'>
                 <img 
-                  :src="this.host + '/files/'  + this.fileDir + '/' + data['avatar']" 
+                  :src="this.host + '/files/'  + this.fileDir + '/' + data['image']" 
                   class='rounded-circle' width='150'
                 />
                 <div class='mt-3'>

@@ -41,7 +41,7 @@
         <a :href="url">
           <div class='header-icon'>
             <img 
-              :src="this.host +'/files/'  + this.fileDir + '/' + checkImage(data['avatar'])" 
+              :src="this.host +'/files/'  + this.fileDir + '/' + checkImage(data['image'])" 
               alt='profile' 
             >
           </div>

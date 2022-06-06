@@ -52,7 +52,7 @@ class DiaTables {
   }
 
   checkImage(image) {
-    if (typeof image == "undefined") {
+    if (typeof image == "undefined" || image == "undefined") {
       return "default.jpg";
     } else {
       return image;
