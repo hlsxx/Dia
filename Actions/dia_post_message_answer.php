@@ -19,9 +19,9 @@
   $updateData['id_answer'] = $db->getLastItemId($data['tableName'])['id'];
 
   $db->update(
-    tableName: $data['tableName'],
-    rowId: $data['rowId'],
-    data: $updateData
+    $data['tableName'],
+    $data['rowId'],
+    $updateData
   );
 
   echo $updateData['id_answer'];
