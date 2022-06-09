@@ -21,14 +21,14 @@
       $buttons = (array)$data->params->buttons;
 
       $totalCount = $db->dbSelect(
-        tableName: $data->params->tableName, 
-        conditions: ["select" => "count(*) as count"]
+        $data->params->tableName, 
+        ["select" => "count(*) as count"]
       );
 
       $pagination = \Core\Bice::pagination(
-        countTotal: reset($totalCount)['count'],
-        currentPage: $data->params->currentPage ?? 1,
-        count: $data->params->count
+        $data->params->currentPage == 0 ? 1 : $data->params->currentPage,
+        $data->params->count,
+        reset($totalCount)['count'],
       );
 
       $conditions = array_merge(
@@ -37,8 +37,8 @@
       );
 
       $data = $db->dbSelect(
-        tableName: $data->params->tableName,
-        conditions: $conditions
+        $data->params->tableName,
+        $conditions
       );
 
       if (array_key_exists('tableName', $data)) {
