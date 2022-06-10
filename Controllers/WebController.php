@@ -143,12 +143,21 @@ namespace Core\Controllers {
     }
 
     /**
+     * get all POST params
+     * @return array
+     */
+    public static function getPostRequest() {
+      return json_decode(file_get_contents("php://input"), TRUE)["params"];
+    }
+
+    /**
      * get specific POST param
      * @return string
      */
     public static function getPostParam(string $param) {
       return isset($_POST[$param]) ? $_POST[$param] : "";
     }
+    
 
     /**
      * Redirect to URL

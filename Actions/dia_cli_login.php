@@ -2,9 +2,7 @@
 
   global $db, $webController;
 
-  $data = \Core\Controllers\WebController::getPostParams();
-
-  if (empty($data)) $data = $db->getPostRequest();
+  $data = \Core\Controllers\WebController::getPostRequest();
 
   try {
     $selectUserIfExists = [];
@@ -29,9 +27,9 @@
 
     \Core\Controllers\UserController::setUser($selectUserIfExists);
 
-    \Core\Controllers\WebController::redirect("moj-ucet");
+    echo 1;
   } catch(\Exception $e) {
-    \Core\Controllers\WebController::redirect("login?error=" . urlencode($e->getMessage()));
+    echo $e->getMessage();
   }
 
 ?>
