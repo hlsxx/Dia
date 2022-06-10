@@ -56,10 +56,12 @@ export default {
   props: ['index', 'searchFields'],
   watch: {
     search(val) {
-      axios.post('index.php?action=dia_elasticsearch_get', {
-        search: val,
-        index: this.index,
-        searchFields: this.searchFields
+      axios.post('index.php?action=dia_search', {
+        params: {
+          search: val,
+          index: this.index,
+          searchFields: this.searchFields
+        }
       }).then((res) => {
         this.count = res.data['count'];
         this.hits = res.data['hits']
@@ -71,9 +73,12 @@ export default {
       return this.hits.map(
         function(hit) { 
           return { 
-            hit: "" + hit._source.title + "",
-            link: hit._source.link,
-            id: hit._id 
+            hit: "" + hit.title + "",
+            link: hit.link,
+            id: hit.id 
+            //hit: "" + hit._source.title + "",
+            //link: hit._source.link,
+            //id: hit._id 
           } 
         }
       );
