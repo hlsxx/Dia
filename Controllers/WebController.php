@@ -127,6 +127,14 @@ namespace Core\Controllers {
     }
 
     /**
+     * GET $_GET params
+     * @return string
+     */
+    public static function getParams() {
+      return !empty($_GET) ? $_GET : [];
+    }
+
+    /**
      * GET $_GET param
      * @return string
      */

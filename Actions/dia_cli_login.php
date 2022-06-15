@@ -25,11 +25,14 @@
       throw new \Exception("Password not valid");
     }
 
-    \Core\Controllers\UserController::setUser($selectUserIfExists);
+    //\Core\Controllers\UserController::setUser($selectUserIfExists);
 
-    echo 1;
+    echo json_encode($selectUserIfExists);
   } catch(\Exception $e) {
-    echo $e->getMessage();
+    echo json_encode([
+      "status" => "fail",
+      "message" => $e->getMessage()
+    ]);
   }
 
 ?>
